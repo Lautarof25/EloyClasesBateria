@@ -7,7 +7,7 @@ let isGalleryView = false;
 function playSound() {
   if (audioCtx.state === 'suspended') audioCtx.resume();
 
-  const audio = new Audio('cymbal.mp3');
+  const audio = new Audio('/src/audio/cymbal.mp3');
   audio.currentTime = 0;
   audio.play();
 
@@ -15,7 +15,6 @@ function playSound() {
   void cymbalImg.offsetWidth;
   cymbalImg.classList.add('swinging');
 
-  // Esperar 2 segundos antes de cambiar de vista
   setTimeout(() => {
     isGalleryView = !isGalleryView;
 
@@ -26,19 +25,17 @@ function playSound() {
       sliderTrack.classList.remove('show-gallery');
       cymbalText.textContent = "🥁 Ver Videos 🥁";
     }
-  }, 2000);
+  }, 500);
 }
 
 cymbalImg.addEventListener('click', playSound);
 
 cymbalImg.addEventListener('click', () => {
-  cymbalImg.style.cursor = "url('drum-stick-hit.png') 10 0, auto";
+  cymbalImg.style.cursor = "url('/src/images/drum-stick-hit.png') 10 0, auto";
 
-  // quitar el cursor inclinado después de un breve tiempo
-  setTimeout(() => { cymbalImg.style.cursor = "url('drum-stick.png') 10 0, auto"; }, 300);
+  setTimeout(() => { cymbalImg.style.cursor = "url('/src/images/drum-stick.png') 10 0, auto"; }, 300);
 });
 
-// Carrusel
 const imgs = document.querySelectorAll('.bg-slider img');
 let idx = 0;
 setInterval(() => {

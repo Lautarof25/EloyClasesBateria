@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'dzw';
-  src: url('/dzw.ttf') format('woff2'),
-    url('/dzw.woff') format('woff'),
-    url('/dzw.ttf') format('truetype');
+  src: url('/src/font/dzw.ttf') format('woff2'),
+    url('/src/font/dzw.woff') format('woff'),
+    url('/src/font/dzw.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -18,16 +18,13 @@ body {
   color: white;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-  cursor: url('drum-stick.png') 10 0, auto;
+  cursor: url('/src/images/drum-stick.png') 10 0, auto;
 }
 
 #cymbal-img {
-  cursor: url('drum-stick.png') 10 0, auto;
+  cursor: url('/src/images/drum-stick.png') 10 0, auto;
 }
 
-
-
-/* Carrusel y Fondo */
 .bg-slider {
   position: fixed;
   top: 0;
@@ -55,12 +52,10 @@ body {
   margin-bottom: 20px;
 }
 
-/* Contenedor del título */
 .title-wrapper {
   position: relative;
 }
 
-/* Título */
 h1 {
   font-family: 'dzw', sans-serif;
   font-weight: 400;
@@ -75,7 +70,6 @@ h1 {
   z-index: 2;
 }
 
-/* Palillos */
 .palillo {
   position: absolute;
   top: 50%;
@@ -84,19 +78,16 @@ h1 {
   z-index: 1;
 }
 
-/* Izquierdo */
 .palillo-izq {
   left: 0;
   transform: translate(-35%, 0) rotate(-8deg) scaleX(-1);
 }
 
-/* Derecho */
 .palillo-der {
   right: 0;
   transform: translate(35%, 0) rotate(8deg);
 }
 
-/* Subtítulo Banner Blanco */
 .subtitle-banner {
   background: white;
   color: black;
@@ -107,17 +98,12 @@ h1 {
   text-transform: uppercase;
   font-size: clamp(0.7rem, 2.5vw, 1rem);
 
-  /* Bordes serrucho irregulares */
-  clip-path: polygon(
-      /* lado izquierdo con irregularidades */
-      0% 0%, 6% 3%, 0% 8%, 7% 12%, 0% 18%, 5% 25%,
+  clip-path: polygon(0% 0%, 6% 3%, 0% 8%, 7% 12%, 0% 18%, 5% 25%,
       0% 32%, 8% 38%, 0% 45%, 6% 52%, 0% 60%, 9% 68%,
       0% 75%, 7% 82%, 0% 90%, 5% 96%, 0% 100%,
 
-      /* base inferior recta */
       100% 100%,
 
-      /* lado derecho con irregularidades */
       100% 96%, 93% 90%, 100% 82%, 94% 75%, 100% 68%, 92% 60%,
       100% 52%, 95% 45%, 100% 38%, 93% 32%, 100% 25%, 94% 18%,
       100% 12%, 92% 8%, 100% 3%, 94% 0%);
@@ -145,7 +131,6 @@ h1 {
   text-align: center;
 }
 
-/* Slider Layout */
 .content-window {
   width: 100%;
   flex-grow: 1;
@@ -159,7 +144,6 @@ h1 {
 .slider-track {
   display: flex;
   width: 200%;
-  /* 2 slides = 200% width of parent */
   transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
   height: 100%;
 }
@@ -170,22 +154,17 @@ h1 {
 
 .content-slide {
   width: 50%;
-  /* Each slide corresponds to 50% of track (100% of window) */
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* Centrar contenido en slide */
   max-height: 100%;
   overflow-y: auto;
-  /* Permitir scroll interno si es necesario */
 }
 
-/* Platillo fuera del slider */
-/* Platillo fuera del slider */
 .cymbal-container {
-  cursor: url('drum-stick.png') 10 0, auto;
+  cursor: url('/src/images/drum-stick.png') 10 0, auto;
   z-index: 10;
   transform-origin: 50% 0%;
   position: relative;
@@ -227,7 +206,6 @@ h1 {
   transition: opacity 0.3s ease;
 }
 
-/* Panel de Información */
 #info-panel {
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.3);
@@ -244,9 +222,6 @@ h1 {
   padding: 5px;
 }
 
-/* ... animaciones ... */
-
-/* Barra de Contacto */
 .contact-grid {
   margin-top: auto;
   display: grid;
@@ -299,7 +274,6 @@ h1 {
   animation: swing 0.8s ease-out;
 }
 
-/* Barra de Contacto */
 .contact-grid {
   margin-top: auto;
   display: grid;
@@ -325,7 +299,6 @@ h1 {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Botón más llamativo */
 .whatsapp-btn {
   background: #25D366;
   color: #fff;
@@ -343,15 +316,12 @@ h1 {
 .video-gallery {
   width: 100%;
   height: 100%;
-  /* Ocupar todo el slide */
   display: flex;
-  /* Flex para centrar */
   align-items: center;
   justify-content: center;
   padding: 10px;
 }
 
-/* Base */
 .video-wrapper {
   position: relative;
   overflow: hidden;
@@ -360,23 +330,18 @@ h1 {
   background: #000;
   width: auto;
   max-width: 100%;
-  /* Limitar altura para que no desborde y asegurar que entre en pantalla */
   max-height: 100%;
   aspect-ratio: 16 / 9;
-  /* Mantener relación de aspecto */
 }
 
 .video-wrapper video {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  /* Asegurar que se vea todo el video */
   display: block;
 }
 
 @media (max-width: 600px) {
-
-  /* Menú de Navegación */
   .main-nav {
     position: absolute;
     top: 0;
