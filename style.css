@@ -14,6 +14,10 @@ body {
   cursor: url('drum-stick.png') 10 0, auto;
 }
 
+#cymbal-img {
+  cursor: url('drums-tick.png') 10 0, auto;
+}
+
 /* Carrusel y Fondo */
 .bg-slider {
   position: fixed;
@@ -229,6 +233,26 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.video-wrapper {
+  max-width: 400px;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background-color: #000;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.video-wrapper:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
 }
 
 @media (max-width: 600px) {

@@ -40,6 +40,13 @@ function playSound() {
 // Asignamos el evento al platillo directamente
 cymbalImg.addEventListener('click', playSound);
 
+cymbalImg.addEventListener('click', () => {
+  cymbalImg.style.cursor = "url('drum-stick-hit.png') 10 0, auto";
+
+  // quitar el cursor inclinado después de un breve tiempo
+  setTimeout(() => { cymbalImg.style.cursor = "url('drum-stick.png') 10 0, auto"; }, 300);
+});
+
 // Carrusel
 const imgs = document.querySelectorAll('.bg-slider img');
 let idx = 0;
