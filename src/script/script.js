@@ -2,7 +2,7 @@ const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const cymbalImg = document.getElementById('cymbal-img');
 const cymbalText = document.getElementById('cymbal-text');
 const sliderTrack = document.getElementById('slider-track');
-let isGalleryView = false;
+let currentView = 0; // 0: Info, 1: About, 2: Gallery
 
 function playSound() {
   if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -16,14 +16,18 @@ function playSound() {
   cymbalImg.classList.add('swinging');
 
   setTimeout(() => {
-    isGalleryView = !isGalleryView;
+    currentView = (currentView + 1) % 3;
 
-    if (isGalleryView) {
+    sliderTrack.classList.remove('show-gallery', 'show-about');
+
+    if (currentView === 0) {
+      cymbalText.textContent = "🥁 Sobre mí 🥁";
+    } else if (currentView === 1) {
+      sliderTrack.classList.add('show-about');
+      cymbalText.textContent = "🥁 Ver Videos 🥁";
+    } else if (currentView === 2) {
       sliderTrack.classList.add('show-gallery');
       cymbalText.textContent = "🥁 Volver al Inicio 🥁";
-    } else {
-      sliderTrack.classList.remove('show-gallery');
-      cymbalText.textContent = "🥁 Ver Videos 🥁";
     }
   }, 500);
 }
