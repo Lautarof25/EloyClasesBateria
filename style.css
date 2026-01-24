@@ -36,6 +36,67 @@ body {
   opacity: 1;
 }
 
+.header-section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Contenedor del título */
+.title-wrapper {
+  position: relative;
+  padding: 50px clamp(50px, 20vw, 50px);
+  /* zona segura */
+}
+
+/* Título */
+h1 {
+  font-family: "Rubik Dirt", system-ui;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 8vw, 5rem);
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Palillos */
+.palillo {
+  position: absolute;
+  top: 50%;
+  width: 60vw;
+  max-width: 700px;
+  z-index: 1;
+}
+
+/* Izquierdo */
+.palillo-izq {
+  left: 0;
+  transform: translate(-35%, -50%) rotate(-8deg) scaleX(-1);
+}
+
+/* Derecho */
+.palillo-der {
+  right: 0;
+  transform: translate(35%, -50%) rotate(8deg);
+}
+
+/* Subtítulo Banner Blanco */
+.subtitle-banner {
+  background: white;
+  color: black;
+  padding: 8px 40px;
+  font-weight: 900;
+  max-width: 450px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  font-size: clamp(0.8rem, 3vw, 1.2rem);
+  clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -52,7 +113,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 60px 20px;
+  padding: 20px 20px;
   text-align: center;
 }
 
@@ -89,10 +150,6 @@ body {
   pointer-events: none;
 }
 
-.info-overlay:not(.visible) {
-  opacity: 1;
-  visibility: hidden;
-}
 /* Panel de Información */
 #info-panel {
   max-height: 0;
@@ -117,53 +174,6 @@ body {
   font-weight: 900;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
-
-.header-section {
-  margin-bottom: 20px;
-  width: 100%;
-  max-width: 800px;
-}
-
-h1 {
-  font-family: "Rubik Dirt", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  font-size: clamp(2.2rem, 8vw, 5rem);
-  text-transform: uppercase;
-  line-height: 1;
-  letter-spacing: 2px;
-  color: #fff;
-  margin-bottom: 15px;
-}
-
-/* Línea naranja con baqueta */
-.divider-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 15px 0;
-}
-
-.orange-line {
-  height: 6px;
-  background: #f39c12;
-  width: 80%;
-  position: relative;
-  border-radius: 10px;
-}
-
-/* Subtítulo Banner Blanco */
-.subtitle-banner {
-  background: white;
-  color: black;
-  padding: 8px 40px;
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: clamp(0.8rem, 3vw, 1.2rem);
-  clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
-  margin-bottom: 20px;
-}
-
 
 
 @keyframes swing {
