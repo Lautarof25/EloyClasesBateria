@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+@font-face {
+  font-family: 'dzw';
+  src: url('/dzw.ttf') format('woff2'),
+    url('/dzw.woff') format('woff'),
+    url('/dzw.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
   margin: 0;
@@ -53,7 +60,7 @@ body {
 
 /* Título */
 h1 {
-  font-family: "Rubik Dirt", system-ui;
+  font-family: 'dzw', sans-serif;
   font-weight: 400;
   font-size: clamp(2.2rem, 8vw, 4rem);
   text-transform: uppercase;
@@ -97,8 +104,23 @@ h1 {
   margin: 0 auto;
   text-transform: uppercase;
   font-size: clamp(0.8rem, 3vw, 1.2rem);
-  clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+
+  /* Bordes serrucho irregulares */
+  clip-path: polygon(
+      /* lado izquierdo con irregularidades */
+      0% 0%, 6% 3%, 0% 8%, 7% 12%, 0% 18%, 5% 25%,
+      0% 32%, 8% 38%, 0% 45%, 6% 52%, 0% 60%, 9% 68%,
+      0% 75%, 7% 82%, 0% 90%, 5% 96%, 0% 100%,
+
+      /* base inferior recta */
+      100% 100%,
+
+      /* lado derecho con irregularidades */
+      100% 96%, 93% 90%, 100% 82%, 94% 75%, 100% 68%, 92% 60%,
+      100% 52%, 95% 45%, 100% 38%, 93% 32%, 100% 25%, 94% 18%,
+      100% 12%, 92% 8%, 100% 3%, 94% 0%);
 }
+
 
 .overlay {
   position: fixed;
