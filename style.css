@@ -11,6 +11,7 @@ body {
   color: white;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+  cursor: url('drum-stick.png') 10 0, auto;
 }
 
 /* Carrusel y Fondo */
@@ -117,7 +118,7 @@ h1 {
 
 /* Platillo PNG Interactuable */
 .cymbal-container {
-  cursor: pointer;
+  cursor: url('drum-stick.png') 10 0, auto;
   z-index: 10;
   transform-origin: 50% 0%;
   position: relative;
@@ -145,6 +146,16 @@ h1 {
   visibility: visible;
   transition: opacity 0.3s ease;
   pointer-events: none;
+}
+
+.info-overlay.opacity {
+  opacity: 0;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
 }
 
 /* Panel de Información */

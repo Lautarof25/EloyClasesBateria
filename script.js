@@ -14,30 +14,27 @@ function playSound() {
   const noise = audioCtx.createBufferSource();
   noise.buffer = buffer;
   const filter = audioCtx.createBiquadFilter();
-  filter.type = "highpass"; filter.frequency.value = 8000;
+  filter.type = "highpass";
+  filter.frequency.value = 8000;
   const gainNode = audioCtx.createGain();
   gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
   gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.5);
 
-  noise.connect(filter); filter.connect(gainNode); gainNode.connect(audioCtx.destination);
+  noise.connect(filter);
+  filter.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
   noise.start();
 
-  // 2. Animación (Reinicia la animación de balanceo)
+  // 2. Animación
   cymbalImg.classList.remove('swinging');
   void cymbalImg.offsetWidth;
   cymbalImg.classList.add('swinging');
 
-  // 3. El Toggle Mágico
-  // Esto muestra/oculta el panel de información adicional
+  // 3. Toggle del panel
   infoPanel.classList.toggle('visible');
 
-  // 4. Desaparecer el texto inicial permanentemente
-  // Una vez que se toca el platillo, el mensaje de "toca aquí" ya no hace falta
-  if (infoPanel.classList.contains('visible')) {
-    infoOverlay.classList.remove('visible');
-  } else {
-    infoOverlay.classList.add('visible');
-  }
+  // 4. Desaparecer overlay permanentemente
+  infoOverlay.classList.toggle('hidden');
 }
 
 // Asignamos el evento al platillo directamente
