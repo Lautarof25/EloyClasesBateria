@@ -25,6 +25,8 @@ body {
   cursor: url('drum-stick.png') 10 0, auto;
 }
 
+
+
 /* Carrusel y Fondo */
 .bg-slider {
   position: fixed;
@@ -62,7 +64,7 @@ body {
 h1 {
   font-family: 'dzw', sans-serif;
   font-weight: 400;
-  font-size: clamp(2.2rem, 8vw, 4rem);
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: 2px;
@@ -98,12 +100,12 @@ h1 {
 .subtitle-banner {
   background: white;
   color: black;
-  padding: 8px 40px;
+  padding: 5px 30px;
   font-weight: 900;
   max-width: 450px;
   margin: 0 auto;
   text-transform: uppercase;
-  font-size: clamp(0.8rem, 3vw, 1.2rem);
+  font-size: clamp(0.7rem, 2.5vw, 1rem);
 
   /* Bordes serrucho irregulares */
   clip-path: polygon(
@@ -132,26 +134,67 @@ h1 {
   z-index: -1;
 }
 
-.container {
-  min-height: 100vh;
+.main-container {
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px 20px;
+  padding: 10px;
   text-align: center;
 }
 
-/* Platillo PNG Interactuable */
+/* Slider Layout */
+.content-window {
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slider-track {
+  display: flex;
+  width: 200%;
+  /* 2 slides = 200% width of parent */
+  transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+  height: 100%;
+}
+
+.slider-track.show-gallery {
+  transform: translateX(-50%);
+}
+
+.content-slide {
+  width: 50%;
+  /* Each slide corresponds to 50% of track (100% of window) */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Centrar contenido en slide */
+  max-height: 100%;
+  overflow-y: auto;
+  /* Permitir scroll interno si es necesario */
+}
+
+/* Platillo fuera del slider */
+/* Platillo fuera del slider */
 .cymbal-container {
   cursor: url('drum-stick.png') 10 0, auto;
   z-index: 10;
   transform-origin: 50% 0%;
   position: relative;
+  margin: 5px 0;
+  flex-shrink: 0;
 }
 
 #cymbal-img {
-  width: 260px;
+  width: 220px;
   height: auto;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
   transition: transform 0.1s;
@@ -186,27 +229,48 @@ h1 {
 
 /* Panel de Información */
 #info-panel {
-  max-height: 0;
   overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.6s ease, opacity 0.6s ease;
   background-color: rgba(0, 0, 0, 0.3);
-}
-
-#info-panel.visible {
-  max-height: 100vh;
-  opacity: 1;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .info-list {
   list-style: none;
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  /* adaptable */
-  line-height: 1.6;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  line-height: 1.4;
   text-transform: uppercase;
   font-weight: 900;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  padding: 5px;
+}
+
+/* ... animaciones ... */
+
+/* Barra de Contacto */
+.contact-grid {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.contact-item {
+  text-decoration: none;
+  color: white;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 @keyframes swing {
@@ -277,13 +341,14 @@ h1 {
 
 
 .video-gallery {
-  max-width: 850px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* dos columnas iguales */
-  gap: 20px;
-  padding: 20px;
+  width: 100%;
+  height: 100%;
+  /* Ocupar todo el slide */
+  display: flex;
+  /* Flex para centrar */
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 /* Base */
@@ -292,25 +357,21 @@ h1 {
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background: #000;
+  width: auto;
+  max-width: 100%;
+  /* Limitar altura para que no desborde y asegurar que entre en pantalla */
+  max-height: 100%;
+  aspect-ratio: 16 / 9;
+  /* Mantener relación de aspecto */
 }
 
 .video-wrapper video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  /* poster y video se ajustan */
+  object-fit: contain;
+  /* Asegurar que se vea todo el video */
   display: block;
-}
-
-/* Vertical videos */
-.video-wrapper.vertical {
-  aspect-ratio: 9 / 16;
-}
-
-/* Horizontal video ocupa el ancho de las dos columnas */
-.video-wrapper.horizontal {
-  grid-column: span 2;
-  aspect-ratio: 16 / 9;
 }
 
 @media (max-width: 600px) {

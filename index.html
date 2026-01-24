@@ -56,8 +56,9 @@
     </div>
     <div class="overlay"></div>
 
-    <div class="container">
-        <div class="header-section">
+    <main class="main-container">
+        <!-- FIXED TOP -->
+        <header class="header-section">
             <div class="title-wrapper">
                 <img class="palillo palillo-izq" src="palillo.webp" alt="palillo">
                 <h1>CLASES<br>DE<br> BATERIA</h1>
@@ -65,27 +66,48 @@
             </div>
 
             <div class="subtitle-banner">CLASES VIRTUALES O PRESENCIALES</div>
-        </div>
+        </header>
 
+        <!-- FIXED NAVIGATION -->
         <div class="cymbal-container" id="cymbal-btn">
             <img draggable="false" src="platillo.webp" alt="Platillo" id="cymbal-img">
-            <div class="info-overlay">🤘 Toca para más info 🤘</div>
+            <div class="info-overlay" id="cymbal-text">🥁 Ver Videos 🥁</div>
         </div>
 
-        <div id="info-panel">
-            <ul class="info-list">
-                <li>LECTURA</li>
-                <li>TÉCNICA</li>
-                <li>RUDIMENTOS</li>
-                <li>RITMOS</li>
-                <li>FILLS</li>
-                <li>INDEPENDENCIA</li>
-                <li>DOBLE PEDAL</li>
-                <li>REPERTORIO</li>
-            </ul>
+        <!-- DYNAMIC CONTENT WINDOW -->
+        <div class="content-window">
+            <div class="slider-track" id="slider-track">
+                <!-- VISTA 1: INFO -->
+                <section class="content-slide" id="info-view">
+                    <div id="info-panel">
+                        <ul class="info-list">
+                            <li>LECTURA</li>
+                            <li>TÉCNICA</li>
+                            <li>RUDIMENTOS</li>
+                            <li>RITMOS</li>
+                            <li>FILLS</li>
+                            <li>INDEPENDENCIA</li>
+                            <li>DOBLE PEDAL</li>
+                            <li>REPERTORIO</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- VISTA 2: VIDEOS -->
+                <section class="content-slide" id="gallery-view">
+                    <section class="video-gallery" id="videos">
+                        <div class="video-wrapper">
+                            <video controls poster="video4.jpg">
+                                <source src="video4.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </section>
+                </section>
+            </div>
         </div>
 
-        <div class="contact-grid" id="contact-section">
+        <!-- FIXED BOTTOM -->
+        <footer class="contact-grid" id="contact-section">
             <a href="https://instagram.com/Eloy_drumz" class="contact-item" target="_blank">
                 <i class="fa-brands fa-instagram"></i> @Eloy_drumz
             </a>
@@ -93,30 +115,8 @@
                 class="contact-item whatsapp-btn" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> Consulta por WhatsApp
             </a>
-        </div>
-
-
-    </div>
-
-    <section class="video-gallery">
-        <div class="video-wrapper vertical">
-            <video controls poster="video1.jpg">
-                <source src="video1.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="video-wrapper vertical">
-            <video controls poster="video2.jpg">
-                <source src="video2.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="video-wrapper horizontal">
-            <video controls poster="video4.jpg">
-                <source src="video4.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>

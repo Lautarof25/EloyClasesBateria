@@ -1,21 +1,32 @@
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const cymbalImg = document.getElementById('cymbal-img');
-const infoOverlay = document.querySelector('.info-overlay'); // Corregido: punto para clase
-const infoPanel = document.getElementById('info-panel');
+const cymbalText = document.getElementById('cymbal-text');
+const sliderTrack = document.getElementById('slider-track');
+let isGalleryView = false;
 
 function playSound() {
   if (audioCtx.state === 'suspended') audioCtx.resume();
 
   const audio = new Audio('cymbal.mp3');
-  audio.currentTime = 0; // reinicia desde el inicio
+  audio.currentTime = 0;
   audio.play();
 
   cymbalImg.classList.remove('swinging');
   void cymbalImg.offsetWidth;
   cymbalImg.classList.add('swinging');
 
-  infoPanel.classList.toggle('visible');
-  infoOverlay.classList.toggle('hidden');
+  // Esperar 2 segundos antes de cambiar de vista
+  setTimeout(() => {
+    isGalleryView = !isGalleryView;
+
+    if (isGalleryView) {
+      sliderTrack.classList.add('show-gallery');
+      cymbalText.textContent = "🥁 Volver al Inicio 🥁";
+    } else {
+      sliderTrack.classList.remove('show-gallery');
+      cymbalText.textContent = "🥁 Ver Videos 🥁";
+    }
+  }, 2000);
 }
 
 cymbalImg.addEventListener('click', playSound);
