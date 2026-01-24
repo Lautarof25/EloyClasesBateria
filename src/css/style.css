@@ -3,6 +3,7 @@
   src: url('../font/dzw.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 * {
@@ -166,8 +167,10 @@ h1 {
   z-index: 10;
   transform-origin: 50% 0%;
   position: relative;
-  margin: 5px 0;
+  margin: 5px auto;
   flex-shrink: 0;
+  will-change: transform;
+  width: fit-content;
 }
 
 #cymbal-img {

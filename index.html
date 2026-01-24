@@ -29,8 +29,15 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon"> <!-- Datos estructurados (JSON-LD para Google) -->
 <script
     type="application/ld+json"> { "@context": "https://schema.org", "@type": "Course", "name": "Clases de Batería con Eloy Lopez", "description": "Clases profesionales de batería para principiantes y avanzados en Buenos Aires.", "provider": { "@type": "Person", "name": "Eloy Lopez", "url": "https://lautarof25.github.io/EloyClasesBateria/" } } </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Special+Elite&display=swap"
     rel="stylesheet">
+
+<link rel="preload" href="./src/font/dzw.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="./src/images/fondo_bateria1.avif" as="image" type="image/avif">
+<link rel="preload" href="./src/images/palillo.webp" as="image" type="image/webp">
+<link rel="preload" href="./src/images/platillo.webp" as="image" type="image/webp">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -43,25 +50,26 @@
 <body>
 
     <div class="bg-slider">
-        <img src="./src/images/fondo_bateria1.avif" class="active" alt="">
-        <img src="./src/images/fondo_bateria2.avif" alt="">
-        <img src="./src/images/fondo_bateria3.avif" alt="">
+        <img src="./src/images/fondo_bateria1.avif" class="active" alt="Fondo bateria 1" fetchpriority="high">
+        <img src="./src/images/fondo_bateria2.avif" alt="Fondo bateria 2" decoding="async">
+        <img src="./src/images/fondo_bateria3.avif" alt="Fondo bateria 3" decoding="async">
     </div>
     <div class="overlay"></div>
 
     <main class="main-container">
         <header class="header-section">
             <div class="title-wrapper">
-                <img class="palillo palillo-izq" src="./src/images/palillo.webp" alt="palillo">
+                <img class="palillo palillo-izq" src="./src/images/palillo.webp" alt="palillo" fetchpriority="high">
                 <h1>CLASES<br>DE<br> BATERIA</h1>
-                <img class="palillo palillo-der" src="./src/images/palillo.webp" alt="palillo">
+                <img class="palillo palillo-der" src="./src/images/palillo.webp" alt="palillo" fetchpriority="high">
             </div>
 
             <div class="subtitle-banner">CLASES VIRTUALES O PRESENCIALES</div>
         </header>
 
         <div class="cymbal-container" id="cymbal-btn">
-            <img draggable="false" src="./src/images/platillo.webp" alt="Platillo" id="cymbal-img">
+            <img draggable="false" src="./src/images/platillo.webp" alt="Platillo" id="cymbal-img" width="220"
+                height="214" fetchpriority="high">
             <div class="info-overlay" id="cymbal-text">🥁 Ver Videos 🥁</div>
         </div>
 
@@ -85,7 +93,7 @@
                 <section class="content-slide" id="gallery-view">
                     <section class="video-gallery" id="videos">
                         <div class="video-wrapper">
-                            <video controls preload="none" poster="./src/images/video4.jpg">
+                            <video controls preload="metadata" poster="./src/images/video4.jpg">
                                 <source src="./src/videos/video4.mp4" type="video/mp4">
                             </video>
                         </div>
