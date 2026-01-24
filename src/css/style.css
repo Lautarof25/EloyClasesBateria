@@ -1,8 +1,6 @@
 @font-face {
   font-family: 'dzw';
-  src: url('/src/font/dzw.ttf') format('woff2'),
-    url('/src/font/dzw.woff') format('woff'),
-    url('/src/font/dzw.ttf') format('truetype');
+  src: url('../font/dzw.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -18,11 +16,11 @@ body {
   color: white;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-  cursor: url('/src/images/drum-stick.png') 10 0, auto;
+  cursor: url('../images/drum-stick.png') 10 0, auto;
 }
 
 #cymbal-img {
-  cursor: url('/src/images/drum-stick.png') 10 0, auto;
+  cursor: url('../images/drum-stick.png') 10 0, auto;
 }
 
 .bg-slider {
@@ -164,7 +162,7 @@ h1 {
 }
 
 .cymbal-container {
-  cursor: url('/src/images/drum-stick.png') 10 0, auto;
+  cursor: url('../images/drum-stick.png') 10 0, auto;
   z-index: 10;
   transform-origin: 50% 0%;
   position: relative;

@@ -7,7 +7,7 @@ let isGalleryView = false;
 function playSound() {
   if (audioCtx.state === 'suspended') audioCtx.resume();
 
-  const audio = new Audio('/src/audio/cymbal.mp3');
+  const audio = new Audio('./src/audio/cymbal.mp3');
   audio.currentTime = 0;
   audio.play();
 
@@ -31,9 +31,9 @@ function playSound() {
 cymbalImg.addEventListener('click', playSound);
 
 cymbalImg.addEventListener('click', () => {
-  cymbalImg.style.cursor = "url('/src/images/drum-stick-hit.png') 10 0, auto";
+  cymbalImg.style.cursor = "url('./src/images/drum-stick-hit.png') 10 0, auto";
 
-  setTimeout(() => { cymbalImg.style.cursor = "url('/src/images/drum-stick.png') 10 0, auto"; }, 300);
+  setTimeout(() => { cymbalImg.style.cursor = "url('./src/images/drum-stick.png') 10 0, auto"; }, 300);
 });
 
 const imgs = document.querySelectorAll('.bg-slider img');
