@@ -44,15 +44,13 @@ body {
 /* Contenedor del título */
 .title-wrapper {
   position: relative;
-  padding: 50px clamp(50px, 20vw, 50px);
-  /* zona segura */
 }
 
 /* Título */
 h1 {
   font-family: "Rubik Dirt", system-ui;
   font-weight: 400;
-  font-size: clamp(2.2rem, 8vw, 5rem);
+  font-size: clamp(2.2rem, 8vw, 4rem);
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: 2px;
@@ -75,13 +73,13 @@ h1 {
 /* Izquierdo */
 .palillo-izq {
   left: 0;
-  transform: translate(-35%, -50%) rotate(-8deg) scaleX(-1);
+  transform: translate(-35%, 0) rotate(-8deg) scaleX(-1);
 }
 
 /* Derecho */
 .palillo-der {
   right: 0;
-  transform: translate(35%, -50%) rotate(8deg);
+  transform: translate(35%, 0) rotate(8deg);
 }
 
 /* Subtítulo Banner Blanco */
@@ -120,7 +118,6 @@ h1 {
 /* Platillo PNG Interactuable */
 .cymbal-container {
   cursor: pointer;
-  margin: 20px 0;
   z-index: 10;
   transform-origin: 50% 0%;
   position: relative;
@@ -153,28 +150,27 @@ h1 {
 /* Panel de Información */
 #info-panel {
   max-height: 0;
-  opacity: 0;
   overflow: hidden;
-  transition: all 0.6s ease;
-  width: 100%;
-  max-width: 500px;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #info-panel.visible {
-  max-height: 1000px;
+  max-height: 100vh;
   opacity: 1;
   margin-top: 10px;
 }
 
 .info-list {
   list-style: none;
-  font-size: 1.4rem;
-  line-height: 1.8;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  /* adaptable */
+  line-height: 1.6;
   text-transform: uppercase;
   font-weight: 900;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
-
 
 @keyframes swing {
   0% {
@@ -206,7 +202,7 @@ h1 {
 .contact-grid {
   margin-top: auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
   width: 100%;
