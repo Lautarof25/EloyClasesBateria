@@ -245,6 +245,7 @@ h1 {
   width: 100%;
   max-width: 800px;
   background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 
 .contact-item {
@@ -255,26 +256,61 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
+/* Botón más llamativo */
+.whatsapp-btn {
+  background: #25D366;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: scale(1.05);
+}
+
+
+.video-gallery {
+  max-width: 850px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* dos columnas iguales */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Base */
 .video-wrapper {
-  max-width: 400px;
-  margin: 20px auto;
-  border-radius: 12px;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  background-color: #000;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .video-wrapper video {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  /* poster y video se ajustan */
   display: block;
 }
 
-.video-wrapper:hover {
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.3s ease;
+/* Vertical videos */
+.video-wrapper.vertical {
+  aspect-ratio: 9 / 16;
+}
+
+/* Horizontal video ocupa el ancho de las dos columnas */
+.video-wrapper.horizontal {
+  grid-column: span 2;
+  aspect-ratio: 16 / 9;
 }
 
 @media (max-width: 600px) {
