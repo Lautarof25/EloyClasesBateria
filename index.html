@@ -33,9 +33,10 @@
 <link rel="preload" href="./src/font/dzw.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="./src/images/fondo_bateria1.avif" as="image" type="image/avif">
 <link rel="preload" href="./src/images/palillo.webp" as="image" type="image/webp">
-<link rel="preload" href="./src/images/platillo.webp" as="image" type="image/webp">
 
-<link rel="stylesheet" href="./src/css/style.css">
+<link rel="stylesheet" href="./src/css/style.css" fetchpriority="high">
+<link rel="stylesheet" href="./src/css/about.css" fetchpriority="low">
+<link rel="stylesheet" href="./src/css/video.css" fetchpriority="low">
 
 <link rel="icon" href="./src/images/favicon-16x16.png" type="image/png">
 </head>
@@ -197,6 +198,7 @@
     </main>
 
     <script src="./src/script/script.js"></script>
+    <script defer src="./src/script/about.js"></script>
 </body>
 
 </html>
