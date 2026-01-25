@@ -52,7 +52,7 @@ cymbalPrev.addEventListener("click", () => updateView(-1));
   });
 });
 
-// Background Image Slider
+// Background Image Slider (Main BG)
 const imgs = document.querySelectorAll(".bg-slider img");
 let idx = 0;
 setInterval(() => {
@@ -62,3 +62,41 @@ setInterval(() => {
     imgs[idx].classList.add("active");
   }
 }, 5000);
+
+// About Card Image Slider
+const aboutSlides = document.querySelectorAll('.about-slide');
+const dots = document.querySelectorAll('.dot');
+let currentAboutSlide = 0;
+
+function nextAboutSlide() {
+  if (aboutSlides.length === 0) return;
+
+  aboutSlides[currentAboutSlide].classList.remove('active');
+  dots[currentAboutSlide].classList.remove('active');
+
+  currentAboutSlide = (currentAboutSlide + 1) % aboutSlides.length;
+
+  aboutSlides[currentAboutSlide].classList.add('active');
+  dots[currentAboutSlide].classList.add('active');
+}
+
+// Auto-slide every 4 seconds
+let aboutSliderInterval = setInterval(nextAboutSlide, 4000);
+
+// Manual dot navigation
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    clearInterval(aboutSliderInterval);
+
+    aboutSlides[currentAboutSlide].classList.remove('active');
+    dots[currentAboutSlide].classList.remove('active');
+
+    currentAboutSlide = index;
+
+    aboutSlides[currentAboutSlide].classList.add('active');
+    dots[currentAboutSlide].classList.add('active');
+
+    // Restart auto-slide
+    aboutSliderInterval = setInterval(nextAboutSlide, 4000);
+  });
+});
