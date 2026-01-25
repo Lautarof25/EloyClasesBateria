@@ -52,19 +52,25 @@
     <main class="main-container">
         <header class="header-section">
             <div class="title-wrapper">
-                <img class="palillo palillo-izq" src="./src/images/palillo.webp" alt="palillo" fetchpriority="high">
-                <h1>CLASES<br>DE<br> BATERIA</h1>
-                <img class="palillo palillo-der" src="./src/images/palillo.webp" alt="palillo" fetchpriority="high">
+                <picture class="palillo palillo-izq">
+                    <source srcset="./src/images/palillo-mobile.webp" media="(max-width: 768px)">
+                    <source srcset="./src/images/palillo-desktop.webp" media="(min-width: 769px)">
+                    <img src="./src/images/palillo-desktop.webp" alt="palillo izquierdo" fetchpriority="high">
+                </picture>
+
+                <h1>CLASES<br>DE<br>BATERIA</h1>
+
+                <picture class="palillo palillo-der">
+                    <source srcset="./src/images/palillo-mobile.webp" media="(max-width: 768px)">
+                    <source srcset="./src/images/palillo-desktop.webp" media="(min-width: 769px)">
+                    <img src="./src/images/palillo-desktop.webp" alt="palillo derecho" fetchpriority="high">
+                </picture>
+
             </div>
 
             <div class="subtitle-banner">CLASES VIRTUALES O PRESENCIALES</div>
         </header>
 
-
-        <!--
-            <img draggable="false" src="./src/images/platillo.webp" alt="Platillo" id="cymbal-img" width="220"
-                height="214" fetchpriority="high">
--->
         <div class="cymbals-navigation">
             <div class="cymbals-row">
                 <div class="cymbal-wrapper" id="cymbal-prev" title="Anterior">
@@ -135,10 +141,12 @@
                     <div class="about-card">
                         <div class="about-slider-container">
                             <div class="about-slider" id="about-slider">
-                                <img src="./src/images/imagen_perfil.webp" alt="Eloy Lopez 1"
-                                    class="about-slide active" loading="lazy">
-                                <img src="./src/images/imagen_perfil2.webp" alt="Eloy Lopez 2" class="about-slide" loading="lazy">
-                                <img src="./src/images/imagen_perfil3.webp" alt="Eloy Lopez 3" class="about-slide" loading="lazy">
+                                <img src="./src/images/imagen_perfil.webp" alt="Eloy Lopez 1" class="about-slide active"
+                                    loading="lazy">
+                                <img src="./src/images/imagen_perfil2.webp" alt="Eloy Lopez 2" class="about-slide"
+                                    loading="lazy">
+                                <img src="./src/images/imagen_perfil3.webp" alt="Eloy Lopez 3" class="about-slide"
+                                    loading="lazy">
                             </div>
                             <div class="slider-dots" id="slider-dots">
                                 <span class="dot active"></span>
