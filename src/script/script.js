@@ -21,13 +21,13 @@ function playSound() {
     sliderTrack.classList.remove('show-gallery', 'show-about');
 
     if (currentView === 0) {
-      cymbalText.textContent = "🥁 Sobre mí 🥁";
+      cymbalText.textContent = "Servicio";
     } else if (currentView === 1) {
       sliderTrack.classList.add('show-about');
-      cymbalText.textContent = "🥁 Ver Videos 🥁";
+      cymbalText.textContent = "Sobre Mi";
     } else if (currentView === 2) {
       sliderTrack.classList.add('show-gallery');
-      cymbalText.textContent = "🥁 Volver al Inicio 🥁";
+      cymbalText.textContent = "Videos";
     }
   }, 500);
 }
