@@ -1,49 +1,64 @@
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const cymbalImg = document.getElementById('cymbal-img');
-const cymbalText = document.getElementById('cymbal-text');
-const sliderTrack = document.getElementById('slider-track');
-let currentView = 0; // 0: Info, 1: About, 2: Gallery
+const cymbalPrev = document.getElementById("cymbal-prev");
+const cymbalNext = document.getElementById("cymbal-next");
+const sectionTitle = document.getElementById("section-title");
+const sliderTrack = document.getElementById("slider-track");
 
-function playSound() {
-  if (audioCtx.state === 'suspended') audioCtx.resume();
+let currentView = 0; // 0: Servicios, 1: Sobre Mi, 2: Videos
+const views = ["Servicios", "Sobre Mi", "Videos"];
 
-  const audio = new Audio('./src/audio/cymbal.mp3');
+function updateView(direction) {
+  if (audioCtx.state === "suspended") audioCtx.resume();
+
+  const audio = new Audio("./src/audio/cymbal.mp3");
   audio.currentTime = 0;
   audio.play();
 
-  cymbalImg.classList.remove('swinging');
-  void cymbalImg.offsetWidth;
-  cymbalImg.classList.add('swinging');
+  // Animate the clicked cymbal
+  const clickedCymbal = direction === 1 ? cymbalNext : cymbalPrev;
+  clickedCymbal.classList.remove("swinging");
+  void clickedCymbal.offsetWidth;
+  clickedCymbal.classList.add("swinging");
 
   setTimeout(() => {
-    currentView = (currentView + 1) % 3;
+    // Update view state
+    currentView = (currentView + direction + 3) % 3;
 
-    sliderTrack.classList.remove('show-gallery', 'show-about');
+    sliderTrack.classList.remove("show-gallery", "show-about");
 
-    if (currentView === 0) {
-      cymbalText.textContent = "Servicio";
-    } else if (currentView === 1) {
-      sliderTrack.classList.add('show-about');
-      cymbalText.textContent = "Sobre Mi";
+    if (currentView === 1) {
+      sliderTrack.classList.add("show-about");
     } else if (currentView === 2) {
-      sliderTrack.classList.add('show-gallery');
-      cymbalText.textContent = "Videos";
+      sliderTrack.classList.add("show-gallery");
     }
-  }, 500);
+
+    sectionTitle.textContent = views[currentView];
+  }, 400);
 }
 
-cymbalImg.addEventListener('click', playSound);
+cymbalNext.addEventListener("click", () => updateView(1));
+cymbalPrev.addEventListener("click", () => updateView(-1));
 
-cymbalImg.addEventListener('click', () => {
-  cymbalImg.style.cursor = "url('./src/images/drum-stick-hit.png') 10 0, auto";
-
-  setTimeout(() => { cymbalImg.style.cursor = "url('./src/images/drum-stick.png') 10 0, auto"; }, 300);
+// Interaction visual feedback
+[cymbalPrev, cymbalNext].forEach((cymbal) => {
+  cymbal.addEventListener("mousedown", () => {
+    cymbal.style.cursor = "url('./src/images/drum-stick-hit.png') 10 0, auto";
+  });
+  cymbal.addEventListener("mouseup", () => {
+    cymbal.style.cursor = "url('./src/images/drum-stick.png') 10 0, auto";
+  });
+  cymbal.addEventListener("mouseleave", () => {
+    cymbal.style.cursor = "url('./src/images/drum-stick.png') 10 0, auto";
+  });
 });
 
-const imgs = document.querySelectorAll('.bg-slider img');
+// Background Image Slider
+const imgs = document.querySelectorAll(".bg-slider img");
 let idx = 0;
 setInterval(() => {
-  imgs[idx].classList.remove('active');
-  idx = (idx + 1) % imgs.length;
-  imgs[idx].classList.add('active');
+  if (imgs.length > 0) {
+    imgs[idx].classList.remove("active");
+    idx = (idx + 1) % imgs.length;
+    imgs[idx].classList.add("active");
+  }
 }, 5000);
