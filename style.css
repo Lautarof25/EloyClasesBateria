@@ -23,7 +23,7 @@ body {
 
 /* Wrapper mantiene modo mobile incluso en desktop */
 .page-wrapper {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
   position: relative;
 }
@@ -51,7 +51,7 @@ body {
   position: relative;
   width: 100%;
   height: 50vh;
-  background: url("kenny-eliason-TOf0z0ykWO8-unsplash.jpg") center/cover no-repeat;
+  background: url("avatar2.jpg") center/cover no-repeat;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -84,7 +84,7 @@ body {
 h1 {
   font-family: 'dzw', sans-serif;
   font-weight: 400;
-  font-size: clamp(1.5rem, 2vw, 2.3rem);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: 2px;
@@ -93,8 +93,7 @@ h1 {
   margin: 0;
   position: relative;
   z-index: 2;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  /* Added shadow for readability on image */
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 1);
 }
 
 .palillo {
@@ -103,6 +102,8 @@ h1 {
   width: 35vw;
   max-width: 250px;
   z-index: 1;
+  filter:
+    drop-shadow(2px 2px 0 white) drop-shadow(-2px -2px 0 white) drop-shadow(2px -2px 0 white) drop-shadow(-2px 2px 0 white) drop-shadow(2.5px 2.5px 0 black) drop-shadow(-2.5px -2.5px 0 black) drop-shadow(2.5px -2.5px 0 black) drop-shadow(-2.5px 2.5px 0 black)
 }
 
 .palillo-izq {
@@ -158,6 +159,122 @@ h1 {
 }
 
 /* AUDIO SECTION REMOVED FOR NOW OR NOT PRESENT */
+
+/* REDES SOCIALES THUMBNAILS */
+.social-thumbnails {
+  display: flex;
+  flex-direction: column;
+  /* Eliminamos gap y márgenes internos para que se sientan 100% integradas si asi se desea, 
+     pero un pequeño gap ayuda a la distinción visual "natural". 
+     El usuario pidió "sin bordes ni nada que parezca que se separan". 
+     Si quiere que esten pegadas, width 100% y sin margin. */
+  width: 100%;
+}
+
+.social-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  text-decoration: none;
+  /* Eliminamos bordes y sombras externas para que se integre al flujo */
+  border: none;
+  box-shadow: none;
+}
+
+/* 
+   Para diferenciar las secciones si estan pegadas,
+   podemos usar una linea muy sutil o nada.
+   Dejaremos sin borde como pidió.
+*/
+
+.thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.1);
+  background: #111;
+  /* Color base neutro */
+  text-transform: uppercase;
+  transition: transform 0.5s ease;
+}
+
+.thumb-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+/* Efecto hover suave en la imagen (zoom) */
+.social-thumb:hover .thumb-image,
+.social-thumb:hover .thumb-placeholder {
+  transform: scale(1.05);
+}
+
+.thumb-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  /* Degradado tipo sombra al 30% (base), oscurece más abajo */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 100%);
+  transition: background 0.3s;
+}
+
+/* Al hacer hover, quizás oscurecer un poco menos o más, según gusto. 
+   Mantenemos sutil. */
+.social-thumb:hover .thumb-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.social-title {
+  font-family: 'dzw', sans-serif;
+  /* Usamos la fuente del sitio si queda bien, o helvetica */
+  font-size: 2rem;
+  letter-spacing: 4px;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+/* Icono */
+.thumb-overlay img {
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+  transition: transform 0.4s ease, opacity 0.4s;
+}
+
+/* Animación al hover: aparece titulo, sube icono */
+.social-thumb:hover .social-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.social-thumb:hover .thumb-overlay img {
+  transform: scale(1.1) translateY(-5px);
+  opacity: 1;
+}
 
 /* SERVICES */
 .services {

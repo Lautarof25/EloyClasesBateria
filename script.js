@@ -4,38 +4,45 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
+var players = {};
+
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player('yt-player', {
-    events: {
-      'onReady': onPlayerReady
-    }
-  });
+  // Inicializamos ambos reproductores
+  createPlayer('yt-player');
+  createPlayer('yt-player-2');
 }
 
-function onPlayerReady(event) {
-  // Configurar IntersectionObserver cuando el reproductor esté listo
+function createPlayer(elementId) {
+  // Verificamos si existe el elemento en el DOM antes de intentar crearlo
+  if (document.getElementById(elementId)) {
+    players[elementId] = new YT.Player(elementId, {
+      events: {
+        'onReady': (event) => onPlayerReady(event, elementId)
+      }
+    });
+  }
+}
+
+function onPlayerReady(event, elementId) {
+  const playerFn = event.target;
+  const iframe = document.getElementById(elementId);
+  const container = iframe ? iframe.parentElement : null;
+
+  if (!container) return;
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Reproducir video cuando el contenedor es visible
-        // Nota: Los navegadores pueden bloquear el autoplay con sonido.
-        // Se recomienda silenciar si falla el autoplay con sonido.
-        // player.mute(); // Descomentar si es necesario para autoplay estricto
-        player.playVideo();
+        // Reproducir
+        playerFn.playVideo();
       } else {
-        // Opcional: Pausar si sale de pantalla
-        player.pauseVideo();
+        // Pausar
+        playerFn.pauseVideo();
       }
     });
   }, {
-    threshold: 0.8 // 80% visible para activar
-    // Se usa 0.8 en lugar de 1.0 para asegurar que se active incluso si hay pequeños márgenes
+    threshold: 0.5 // 50% visible
   });
 
-  // Observar el contenedor del video
-  const videoContainer = document.querySelector('.video-container');
-  if (videoContainer) {
-    observer.observe(videoContainer);
-  }
+  observer.observe(container);
 }
