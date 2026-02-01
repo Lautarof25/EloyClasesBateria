@@ -96,26 +96,6 @@ h1 {
   text-shadow: 0 4px 10px rgba(0, 0, 0, 1);
 }
 
-.palillo {
-  position: absolute;
-  top: 50%;
-  width: 35vw;
-  max-width: 250px;
-  z-index: 1;
-  filter:
-    drop-shadow(2px 2px 0 white) drop-shadow(-2px -2px 0 white) drop-shadow(2px -2px 0 white) drop-shadow(-2px 2px 0 white) drop-shadow(2.5px 2.5px 0 black) drop-shadow(-2.5px -2.5px 0 black) drop-shadow(2.5px -2.5px 0 black) drop-shadow(-2.5px 2.5px 0 black)
-}
-
-.palillo-izq {
-  right: 55%;
-  transform: translateY(-35%) rotate(-5deg) scaleX(-1);
-}
-
-.palillo-der {
-  left: 55%;
-  transform: translateY(-35%) rotate(5deg);
-}
-
 /* Contenido */
 .hero-content {
   position: relative;
